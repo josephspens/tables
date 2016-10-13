@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
+
+import Table from '../../containers/Table';
+import { requestCharacters } from '../../actions/characters';
+
 import logo from './logo.svg';
 import './index.css';
 
-class App extends Component {
+export default class App extends Component {
+  static contextTypes = {
+    theme: PropTypes.object.isRequired
+  }
+
   render() {
     return (
       <div className="App">
@@ -10,12 +18,18 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="App-intro">
+          <Table
+            fetchAction={() => requestCharacters()}
+            sortAction={() => {}}
+          >
+            <th style={this.context.theme.tableCell}>First Name</th>
+            <th style={this.context.theme.tableCell}>Last Name</th>
+            <th style={this.context.theme.tableCell}>Gender</th>
+            <th style={this.context.theme.tableCell}>Is Alive</th>
+          </Table>
+        </div>
       </div>
     );
   }
 }
-
-export default App;
