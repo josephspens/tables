@@ -1,13 +1,4 @@
 import { combineReducers } from 'redux';
-import { CHARACTERS_FETCH_SUCCEEDED } from '../actions/characters';
+import repos from './repos';
 
-const characters = (state = [], { type, data }) => {
-  switch (type) {
-    case CHARACTERS_FETCH_SUCCEEDED:
-      return data.items
-    default:
-      return state;
-  }
-}
-
-export default combineReducers({ characters });
+export default combineReducers({ repos });

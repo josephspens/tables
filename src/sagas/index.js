@@ -1,7 +1,7 @@
-import { watchForCharactersRequest } from './characters';
+import { watchForReposRequest } from './repos';
 
 export default function* rootSaga() {
   yield [
-    watchForCharactersRequest()
+    watchForReposRequest()
   ];
 };
