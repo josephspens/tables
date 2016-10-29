@@ -22,7 +22,7 @@ export default class Table extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchItems(this.props.username);
+    this.props.fetchItems();
   }
 
   render() {

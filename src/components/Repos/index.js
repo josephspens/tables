@@ -12,8 +12,8 @@ export const mapStateToProps = (state) => {
   return { items, columns };
 }
 
-export const mapDispatchToProps = (dispatch) => ({
-  fetchItems: (user) => dispatch(Actions.requestRepos(user))
+export const mapDispatchToProps = (dispatch, { username }) => ({
+  fetchItems: () => dispatch(Actions.requestRepos(username))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
