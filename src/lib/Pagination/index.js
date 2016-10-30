@@ -6,23 +6,28 @@ export default class Pagination extends Component {
   }
 
   render() {
+    const styles = this.context.theme.pagination;
     return (
-      <div style={this.context.theme.pagination.container}>
+      <div style={styles.container}>
         <button
           disabled={!this.props.first}
           onClick={() => this.props.fetch(this.props.first)}
+          style={styles.button(this.props.first)}
         >First</button>
         <button
           disabled={!this.props.prev}
           onClick={() => this.props.fetch(this.props.prev)}
+          style={styles.button(this.props.prev)}
         >Prev</button>
         <button
           disabled={!this.props.next}
           onClick={() => this.props.fetch(this.props.next)}
+          style={styles.button(this.props.next)}
         >Next</button>
         <button
           disabled={!this.props.last}
           onClick={() => this.props.fetch(this.props.last)}
+          style={styles.button(this.props.last)}
         >Last</button>
       </div>
     );

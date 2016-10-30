@@ -1,13 +1,19 @@
 import * as Actions from '../actions/repos';
 
-export const firstPage = {
+export const initialPage = {
   start: 1,
   limit: 10
 };
 
+export const initialSorting = {
+  sort: 'full_name',
+  direction: 'asc'
+}
+
 export const initialState = {
   items: [],
-  ...firstPage,
+  ...initialPage,
+  ...initialSorting,
   page: {}
 };
 
