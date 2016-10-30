@@ -6,6 +6,7 @@ export const columnHeader = PropTypes.shape({
 }).isRequired
 
 export default {
+  items: PropTypes.array,
   fetchItems: PropTypes.func.isRequired,
   sortItems: PropTypes.func,
   username: PropTypes.string.isRequired,

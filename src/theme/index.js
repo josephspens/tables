@@ -16,9 +16,16 @@ export const tableCell = {
   padding: "0.5em 1em"
 };
 
+export const tableFoot = {
+  pagination: {
+
+  }
+};
+
 export default {
   table,
   tableHead,
   tableCell,
+  tableFoot,
   pagination
 };

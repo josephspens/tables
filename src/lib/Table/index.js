@@ -4,7 +4,8 @@ import Pagination from '../Pagination';
 
 export default class Table extends Component {
   static defaultProps = {
-    sortItems: () => {}
+    sortItems: () => {},
+    items: []
   }
 
   static propTypes = propTypes
@@ -51,12 +52,18 @@ export default class Table extends Component {
               </tr>
             ))}
           </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan={this.props.columns.length}>
+                <Pagination
+                  fetch={this.props.fetchItems}
+                  {...this.props.page}
+                  limit={this.props.limit}
+                />
+              </td>
+            </tr>
+          </tfoot>
         </table>
-        <Pagination
-          fetch={this.props.fetchItems}
-          {...this.props.page}
-          limit={this.props.limit}
-        />
       </div>
     );
   }

@@ -8,7 +8,7 @@ export const mapOptionsToParams = (options) => {
     .keys(options)
     .map(key => `${parameterMap[key]}=${options[key]}`)
     .join('&');
-}
+};
 
 export const getLinkHeaders = (response) => {
   const linkHeader = response.headers.get('link');
@@ -19,15 +19,19 @@ export const getLinkHeaders = (response) => {
     memo[rel] = url;
     return memo;
   }, {});
-}
+};
+
+export const receiveRepos = (response) => {
+  const pagination = getLinkHeaders(response);
+  return response.json().then(items => ({ items, pagination }));
+};
+
+export const rejectRepos = (response) => response.json().then(({ message }) => message);
 
 export async function fetchRepos(user, options) {
   const url = typeof options === 'string' ? options : `https://api.github.com/users/${user}/repos?${mapOptionsToParams(options)}`;
   try {
-    return await fetch(url).then(response => {
-      const pagination = getLinkHeaders(response);
-      return response.json().then(items => ({ items, pagination }));
-    });
+    return await fetch(url).then(receiveRepos, rejectRepos);
   } catch (error) {
     console.error(error);
   }

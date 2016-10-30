@@ -20,10 +20,7 @@ export const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case Actions.REQUEST_REPOS:
-      return {
-        ...state,
-        ...action.options
-      };
+      return Object.assign({}, state, typeof action.options === 'object' ? action.options : {});
     case Actions.RECEIVE_REPOS:
       return {
         ...state,

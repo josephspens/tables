@@ -18,4 +18,4 @@ export const disabledState = {
   cursor: "not-allowed"
 };
 
-export default (enabled) => Object.assign({}, defaultButton, enabled ? {} : disabledState);
+export default (enabled) => Object.assign({}, defaultButton, (!!enabled ? {} : disabledState));
