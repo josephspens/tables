@@ -11,7 +11,8 @@ export const mapOptionsToParams = (options) => {
 }
 
 export const getLinkHeaders = (response) => {
-  const links = response.headers.get('link').split(', ');
+  const linkHeader = response.headers.get('link');
+  const links = linkHeader ? linkHeader.split(', ') : [];
   return links.reduce((memo, link) => {
     const url = link.match(/<(.*)>/i)[1];
     const rel = link.match(/rel="(.*)"/i)[1];

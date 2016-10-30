@@ -52,7 +52,11 @@ export default class Table extends Component {
             ))}
           </tbody>
         </table>
-        <Pagination fetch={this.props.fetchItems} {...this.props.page} />
+        <Pagination
+          fetch={this.props.fetchItems}
+          {...this.props.page}
+          limit={this.props.limit}
+        />
       </div>
     );
   }

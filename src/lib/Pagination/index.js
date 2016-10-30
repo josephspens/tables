@@ -9,6 +9,21 @@ export default class Pagination extends Component {
     const styles = this.context.theme.pagination;
     return (
       <div style={styles.container}>
+        <label
+          style={styles.limit.container}
+        >
+          <select
+            style={styles.limit.dropdown}
+            value={this.props.limit}
+            onChange={({ target: { value } }) => this.props.fetch({ limit: value })}
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+          <small style={styles.limit.label}>items per page</small>
+        </label>
         <button
           disabled={!this.props.first}
           onClick={() => this.props.fetch(this.props.first)}
