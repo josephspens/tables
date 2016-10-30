@@ -4,10 +4,10 @@ import { call, put } from 'redux-saga/effects';
 import * as Actions from '../actions/repos';
 import * as API from '../api/repos';
 
-export function* getRepos({ user }) {
+export function* getRepos({ user, options }) {
    try {
-      const repos = yield call(API.fetchRepos, user);
-      yield put(Actions.recieveRepos(repos));
+      const { items, pagination } = yield call(API.fetchRepos, user, options);
+      yield put(Actions.recieveRepos(items, pagination));
    } catch (error) {
       yield put(Actions.rejectRepos(error));
    }

@@ -4,16 +4,15 @@ import Table from '../../lib/Table';
 import * as Actions from '../../actions/repos';
 
 export const mapStateToProps = (state) => {
-  const items = state.repos;
   const columns = [
     { name: 'Name', id: 'name' },
     { name: 'Forks', id: 'forks' }
   ];
-  return { items, columns };
+  return { ...state.repos, columns };
 }
 
 export const mapDispatchToProps = (dispatch, { username }) => ({
-  fetchItems: () => dispatch(Actions.requestRepos(username))
+  fetchItems: (options) => dispatch(Actions.requestRepos(username, options))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

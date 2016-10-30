@@ -10,5 +10,10 @@
   },
   "tableCell": {
     "padding": "0.5em 1em"
+  },
+  "pagination": {
+    "container": {
+      "display": "block"
+    }
   }
 }
