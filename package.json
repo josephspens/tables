@@ -1,7 +1,7 @@
 {
   "name": "tables",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://josephspens.github.io/tables",
   "devDependencies": {
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
