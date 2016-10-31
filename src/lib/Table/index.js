@@ -31,9 +31,15 @@ export default class Table extends Component {
               {this.props.columns.map(({ name, id }) => (
                 <th
                   key={id}
-                  style={this.context.theme.tableCell}
+                  style={this.context.theme.tableColumnHeader}
                 >
                   {name}
+                  <span
+                    style={this.context.theme.tableColumnHeaderDirection}
+                    dangerouslySetInnerHTML={{ __html: this.props.sortable.includes(id) && this.props.sort !== id && '&#8645;' }}
+                  >
+                    {/* {this.props.sortable.includes(id) && this.props.sort !== id && '&#8645;'} */}
+                  </span>
                 </th>
               ))}
             </tr>

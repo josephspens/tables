@@ -27,7 +27,7 @@ export const limit = {
 export default {
   container,
   limit,
-  button(enabled) {
+  button: (enabled) => {
     return Object.assign({}, button(!!enabled), {
       marginRight: "1em",
       fontSize: "0.75em"

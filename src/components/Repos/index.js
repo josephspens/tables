@@ -8,6 +8,9 @@ export const mapStateToProps = ({ repos }) => ({
   columns: [
     { name: 'Name', id: 'name' },
     { name: 'Forks', id: 'forks' }
+  ],
+  sortable: [
+    'name'
   ]
 });
 
