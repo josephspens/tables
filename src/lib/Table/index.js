@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import propTypes from './propTypes';
 import Pagination from '../Pagination';
+import { getSortableIcon } from './utils';
 
 export default class Table extends Component {
   static defaultProps = {
@@ -36,10 +37,15 @@ export default class Table extends Component {
                   {name}
                   <span
                     style={this.context.theme.tableColumnHeaderDirection}
-                    dangerouslySetInnerHTML={{ __html: this.props.sortable.includes(id) && this.props.sort !== id && '&#8645;' }}
-                  >
-                    {/* {this.props.sortable.includes(id) && this.props.sort !== id && '&#8645;'} */}
-                  </span>
+                    dangerouslySetInnerHTML={{
+                      __html: getSortableIcon({
+                        sortableColumns: this.props.sortable,
+                        sortedColumn: this.props.sort,
+                        columnId: id,
+                        sortDirection: this.props.direction
+                      })
+                    }}
+                  ></span>
                 </th>
               ))}
             </tr>
